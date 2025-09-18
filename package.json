@@ -1,0 +1,27 @@
+{
+  "name": "awesome-keylogger",
+  "version": "1.0.0",
+  "description": "CLI application that logs typing activity globally while the program is running",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "keylogger",
+    "typing",
+    "cli",
+    "logger",
+    "local",
+    "global",
+    "capture"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {
+    "node-global-key-listener": "^0.1.2"
+  }
+}
