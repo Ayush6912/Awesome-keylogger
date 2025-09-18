@@ -34,19 +34,21 @@ Uma aplicação CLI Node.js que registra a atividade de digitação localmente e
 ## Características
 
 - 🌐 **Captura global**: Funciona em todo o sistema operacional (requer permissões)
+- 🪟 **Rastreamento de janela ativa**: Captura informações da aplicação e janela onde você está digitando
 - ⏱️ **Agrupamento por minuto**: Organiza a digitação em intervalos de 1 minuto
 - 📅 **Arquivos diários**: Cria um arquivo separado para cada dia
 - 🔄 **Tempo real**: Exibe as linhas no console conforme são gravadas
 - 🛡️ **Saída limpa**: Pressione Ctrl+C para finalizar com segurança
 - 📝 **Logs de sessão**: Registra início e fim de cada sessão
 - 🎯 **Captura avançada**: Utiliza biblioteca `node-global-key-listener` para captura global
+- 🔍 **Separação clara**: Distingue visualmente entre aplicação e texto digitado nos logs
 
 ## Requisitos
 
 - Node.js >= 14.0.0
 - Sistema operacional: Windows, macOS, Linux
 - Permissões de administrador (para captura global de teclas)
-- Dependências: `node-global-key-listener`
+- Dependências: `@futpib/node-global-key-listener`, `active-win`
 
 ## Instalação
 
@@ -99,20 +101,38 @@ typing_logs/typing_log_YYYY-MM-DD.txt
 ### Formato das linhas
 ```
 --- Sessão iniciada em DD/MM/YYYY - HH:MM:SS ---
-DD/MM/YYYY - HH:MM:00 - texto digitado naquele minuto
-DD/MM/YYYY - HH:MM:00 - outro texto do próximo minuto
+DD/MM/YYYY - HH:MM:00 - [Aplicação] Título da Janela → texto digitado
+DD/MM/YYYY - HH:MM:00 - [Aplicação] Título → texto | [Nova App] Novo Título → mais texto
 --- Sessão finalizada em DD/MM/YYYY - HH:MM:SS ---
 ```
+
+**Legenda do formato:**
+- `[Aplicação]`: Nome do programa onde você está digitando
+- `Título da Janela`: Título da janela ativa
+- `→`: Indica o início do texto digitado
+- `|`: Separa diferentes aplicações no mesmo minuto
 
 ### Exemplo de arquivo
 ```
 --- Sessão iniciada em 17/09/2025 - 18:44:58 ---
-17/09/2025 - 18:45:00 - esse é um teste de digitação
-17/09/2025 - 18:46:00 - esse valor foi digitado em outro minuto
+17/09/2025 - 18:45:00 - [Chrome] Google Search → pesquisar keylogger nodejs
+17/09/2025 - 18:46:00 - [Chrome] Google Search → tutorial | [VSCode] index.js → function processKey
+17/09/2025 - 18:47:00 - [VSCode] index.js → console.log('teste') | [Terminal] PowerShell → node index.js
 --- Sessão finalizada em 17/09/2025 - 18:47:12 ---
 ```
 
+**Explicação do exemplo:**
+- **18:45**: Usuário digitou "pesquisar keylogger nodejs" no Google Chrome
+- **18:46**: Começou digitando no Chrome, depois mudou para VSCode e digitou código
+- **18:47**: Continuou no VSCode, depois mudou para o Terminal e executou comando
+
 ## Funcionalidades
+
+### Captura de janela ativa
+- **Detecção automática**: Identifica automaticamente qual aplicação e janela está ativa
+- **Informações capturadas**: Nome da aplicação (ex: Chrome, VSCode, Notepad) e título da janela
+- **Separação visual**: Usa símbolos `→` e `|` para distinguir aplicação do texto digitado
+- **Transições**: Registra quando você muda de uma aplicação para outra
 
 ### Tratamento de teclas especiais
 - **Enter**: Convertido em espaço
@@ -147,10 +167,12 @@ const CONFIG = {
 
 ### O que a aplicação FAZ:
 - ✅ Captura teclas globalmente em todo o sistema
+- ✅ Identifica aplicação e janela ativa onde você está digitando
 - ✅ Armazena dados localmente no seu computador
 - ✅ Funciona enquanto o programa estiver em execução
 - ✅ Permite saída limpa a qualquer momento (Ctrl+C)
 - ✅ Agrupa digitação por minutos para melhor organização
+- ✅ Separa visualmente aplicação do texto digitado nos logs
 
 ### O que a aplicação NÃO FAZ:
 - ❌ Não envia dados para servidores externos
