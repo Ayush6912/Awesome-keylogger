@@ -3,7 +3,8 @@
 const fs = require('fs');
 const path = require('path');
 const process = require('process');
-const { GlobalKeyboardListener } = require('node-global-key-listener');
+const { GlobalKeyboardListener } = require('@futpib/node-global-key-listener');
+const activeWin = require('active-win');
 
 // Configurações
 const CONFIG = {
@@ -155,7 +156,7 @@ function flushBuffer() {
 /**
  * Processa uma tecla capturada globalmente
  */
-function processGlobalKey(event) {
+async function processGlobalKey(event) {
     if (CONFIG.DEBUG) {
         console.log(`[DEBUG] Processando tecla global: ${event.name}`);
     }
@@ -183,19 +184,35 @@ function processGlobalKey(event) {
     }
     
     if (key) {
+        // Captura informações da janela ativa
+        let activeWindow = null;
+        try {
+            activeWindow = await activeWin();
+        } catch (error) {
+            if (CONFIG.DEBUG) {
+                console.log(`[DEBUG] Erro ao capturar janela ativa: ${error.message}`);
+            }
+        }
+        
         if (CONFIG.DEBUG) {
             console.log(`[DEBUG] Chamando processKey com: "${key}"`);
+            if (activeWindow) {
+                console.log(`[DEBUG] Janela ativa: ${activeWindow.title} (${activeWindow.owner.name})`);
+            }
         }
-        processKey(key);
+        processKey(key, activeWindow);
     }
 }
 
 /**
  * Processa uma tecla pressionada
  */
-function processKey(key) {
+function processKey(key, activeWindow = null) {
     if (CONFIG.DEBUG) {
         console.log(`[DEBUG] processKey chamada com: '${key}' (charCode: ${key.charCodeAt(0)})`);
+        if (activeWindow) {
+            console.log(`[DEBUG] Janela ativa: ${activeWindow.title} (${activeWindow.owner.name})`);
+        }
     }
     
     const now = new Date();
@@ -210,6 +227,19 @@ function processKey(key) {
     }
     
     currentMinute = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), now.getMinutes());
+    
+    // Armazena informações da janela ativa se disponível
+    if (activeWindow && activeWindow.title && activeWindow.owner && activeWindow.owner.name) {
+        // Adiciona informações da janela ao buffer se mudou de aplicação
+        const windowInfo = `[${activeWindow.owner.name}] ${activeWindow.title}`;
+        if (!currentBuffer.includes(windowInfo)) {
+            if (currentBuffer.length > 0) {
+                currentBuffer += ` | ${windowInfo} → `;
+            } else {
+                currentBuffer = `${windowInfo} → `;
+            }
+        }
+    }
     
     // Processa a tecla
     if (key === '\r' || key === '\n') {
